@@ -20,6 +20,14 @@
     </properties>
 
     <dependencies>
+
+        <!-- EditMods -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>EditMods</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        
         <!-- GWT -->
         <dependency>
             <groupId>com.google.gwt</groupId>
@@ -95,6 +103,9 @@
                 <configuration>
                     <runTarget>ModsEditorDemo.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
+                    <compileSourcesArtifacts>
+                        <artifact>cz.mzk:EditMods</artifact>
+                    </compileSourcesArtifacts>
 <!--                    <i18nMessagesBundle>cz.mzk.modseditordemo.client.Messages</i18nMessagesBundle>-->
                 </configuration>
             </plugin>

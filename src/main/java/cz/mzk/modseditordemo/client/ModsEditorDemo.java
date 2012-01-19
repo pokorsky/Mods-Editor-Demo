@@ -18,6 +18,9 @@ package cz.mzk.modseditordemo.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.smartgwt.client.widgets.layout.VLayout;
+import cz.fi.muni.xkremser.editor.client.mods.ModsCollectionClient;
+import cz.fi.muni.xkremser.editor.client.view.ModsTab;
+import java.util.Arrays;
 
 /**
  * Entry point classes define
@@ -29,10 +32,16 @@ public class ModsEditorDemo implements EntryPoint {
      * This is the entry point method.
      */
     public void onModuleLoad() {
+        ModsTab modsTab = new ModsTab(1);
+        ModsCollectionClient modsClient = new ModsCollectionClient();
+        modsClient.setMods(Arrays.asList(modsTab.getMods()));
+        VLayout modsLayout = modsTab.getModsLayout();
+
         VLayout rootPanel = new VLayout();
         rootPanel.setHeight100();
         rootPanel.setWidth100();
-        rootPanel.setContents("SmartGWT is ready!");
+        rootPanel.addMember(modsLayout);
+//        rootPanel.setContents("SmartGWT is ready!");
 
         rootPanel.draw();
     }
