@@ -19,13 +19,14 @@ package cz.mzk.modseditordemo.client;
 import com.google.gwt.core.client.EntryPoint;
 
 /**
- * Entry point classes define <code>onModuleLoad()</code>.
+ * Entry point classes define
+ * <code>onModuleLoad()</code>.
  */
 public class ModsEditorDemo implements EntryPoint {
 
-  /**
-   * This is the entry point method.
-   */
-  public void onModuleLoad() {
-  }
+    /**
+     * This is the entry point method.
+     */
+    public void onModuleLoad() {
+    }
 }
