@@ -17,6 +17,7 @@
 package cz.mzk.modseditordemo.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.smartgwt.client.widgets.layout.VLayout;
 
 /**
  * Entry point classes define
@@ -28,5 +29,11 @@ public class ModsEditorDemo implements EntryPoint {
      * This is the entry point method.
      */
     public void onModuleLoad() {
+        VLayout rootPanel = new VLayout();
+        rootPanel.setHeight100();
+        rootPanel.setWidth100();
+        rootPanel.setContents("SmartGWT is ready!");
+
+        rootPanel.draw();
     }
 }
