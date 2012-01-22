@@ -5,6 +5,16 @@
 
 <web-app>
 
+    <servlet>
+        <servlet-name>ModsServiceProvider</servlet-name>
+        <servlet-class>cz.mzk.modseditordemo.server.ModsServiceProvider</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ModsServiceProvider</servlet-name>
+        <url-pattern>/ModsEditorDemo/mods</url-pattern>
+    </servlet-mapping>
+
     <!-- Default page to serve -->
     <welcome-file-list>
         <welcome-file>ModsEditorDemo.html</welcome-file>

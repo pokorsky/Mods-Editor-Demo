@@ -17,10 +17,12 @@
 package cz.mzk.modseditordemo.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.smartgwt.client.widgets.Canvas;
+import com.smartgwt.client.widgets.IButton;
+import com.smartgwt.client.widgets.events.ClickEvent;
+import com.smartgwt.client.widgets.events.ClickHandler;
+import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
-import cz.fi.muni.xkremser.editor.client.mods.ModsCollectionClient;
-import cz.fi.muni.xkremser.editor.client.view.ModsTab;
-import java.util.Arrays;
 
 /**
  * Entry point classes define
@@ -32,17 +34,42 @@ public class ModsEditorDemo implements EntryPoint {
      * This is the entry point method.
      */
     public void onModuleLoad() {
-        ModsTab modsTab = new ModsTab(1);
-        ModsCollectionClient modsClient = new ModsCollectionClient();
-        modsClient.setMods(Arrays.asList(modsTab.getMods()));
-        VLayout modsLayout = modsTab.getModsLayout();
+        final ModsPresenter modsTabHolder = new ModsPresenter();
+        Canvas buttonLayout = createButtons(modsTabHolder);
 
-        VLayout rootPanel = new VLayout();
+        VLayout rootPanel = new VLayout(2);
         rootPanel.setHeight100();
         rootPanel.setWidth100();
-        rootPanel.addMember(modsLayout);
-//        rootPanel.setContents("SmartGWT is ready!");
+        rootPanel.setMembers(buttonLayout, modsTabHolder.getUI());
 
         rootPanel.draw();
+    }
+
+    private Canvas createButtons(final ModsPresenter modsTabHolder) {
+        IButton btnNew = new IButton("New");
+        btnNew.addClickHandler(new ClickHandler() {
+
+            public void onClick(ClickEvent event) {
+                modsTabHolder.newData();
+            }
+        });
+        IButton btnLoad = new IButton("Load");
+        btnLoad.addClickHandler(new ClickHandler() {
+
+            public void onClick(ClickEvent event) {
+                modsTabHolder.loadData("id:sample");
+            }
+        });
+        IButton btnSave = new IButton("Save");
+        btnSave.addClickHandler(new ClickHandler() {
+
+            public void onClick(ClickEvent event) {
+                modsTabHolder.saveData();
+            }
+        });
+        HLayout buttonLayout = new HLayout(2);
+        buttonLayout.setLayoutMargin(4);
+        buttonLayout.setMembers(btnNew, btnLoad, btnSave);
+        return buttonLayout;
     }
 }
